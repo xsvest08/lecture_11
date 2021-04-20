@@ -38,9 +38,15 @@ def linear_search(seq, num):
 def pattern_search(seq,pattern):
     position = set()
     pattern_size = len(pattern)
-    for idx in range (len(seq)):
-        if seq[idx:idx+pattern_size] == pattern:
-            position.append((idx + pattern_size)//2)
+    left = 0
+    right = pattern_size
+
+    while right < len(seq):
+        for idx in range (pattern_size):
+            if pattern[idx] != seq[left + idx]:
+                idx += 1
+            elif seq[idx:idx+pattern_size] == pattern:
+                position.append((idx + pattern_size)//2)
     return position
 
 def main():
