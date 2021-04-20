@@ -52,15 +52,42 @@ def pattern_search(seq,pattern):
 
     return position
 
+def binary_search(seq, number):
+    # ordered_numbers
+    left = 0
+    right = len(seq)-1
+
+    while left <= right:
+        middle = (left + right) //2
+
+        if seq[middle] == number:
+            return middle
+        elif seq[middle]<number:
+            left = middle +1
+        elif seq[middle] > number:
+            right = middle -1
+
+    return None
+
+
+
+
 def main():
+
+    sequential_data = read_data("sequential.json", "unordered_numbers")
+    print(sequential_data)
+    result_1= linear_search(sequential_data, 7)
+    print(result_i)
 
     sequential_data = read_data("sequential.json", "dna_sequence")
     print(sequential_data)
+    result_2 = pattern_search(sequential_data, "ATA")
+    print(result_2)
 
-    result_i= linear_search(sequential_data, 7)
-    print(result_i)
+    sequential_data = read_data("sequential.json", "ordered_numbers")
+    print(sequential_data)
+    result_3 = binary_search(sequential_data, 12)
+    print(result_3)
 
-    sequential_data_2 = pattern_search(sequential_data, "ATA")
-    print(sequential_data_2)
 if __name__ == '__main__':
     main()
