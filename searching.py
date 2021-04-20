@@ -44,9 +44,12 @@ def pattern_search(seq,pattern):
     while right < len(seq):
         for idx in range (pattern_size):
             if pattern[idx] != seq[left + idx]:
-                idx += 1
-            elif seq[idx:idx+pattern_size] == pattern:
-                position.append((idx + pattern_size)//2)
+                break
+        else:
+            position.append((left + pattern_size)//2)
+        left += 1
+        right += 1
+
     return position
 
 def main():
