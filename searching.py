@@ -22,10 +22,26 @@ def read_data(file_name, field):
 
     return dict[field]
 
+def linear_search(seq, num):
+    indices = []
+    count = 0
+
+    for idx in range (len(seq)):
+        if seq[idx] == num:
+            indices.append(idx)
+            count += 1
+
+    return {"position": indices,
+            "count": count}
+
+
 def main():
 
     sequential_data = read_data("sequential.json", "dna_sequence")
     print(sequential_data)
+
+    result_i= linear_search(sequential_data, 7)
+    print(result_i)
 
 if __name__ == '__main__':
     main()
